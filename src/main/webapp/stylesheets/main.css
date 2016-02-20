@@ -3,3 +3,11 @@ body {
     color: white;
     background-color: black;
 }
+
+p, input[type=text] {
+    width: 50em;
+}
+
+a:link, a:visited {
+    color: yellow;
+}

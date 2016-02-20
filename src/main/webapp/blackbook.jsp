@@ -20,10 +20,14 @@
     if (user != null) {
         pageContext.setAttribute("user", user);
 %>
+<h1>${fn:escapeXml(user.nickname)}'s Gmail Black Book</h1>
 <p>Hello, ${fn:escapeXml(user.nickname)}! (You can
     <a href="<%= userService.createLogoutURL(request.getRequestURI()) %>">sign out</a>.)
 </p>
-<p>NOTE: You must be logged-in here with the same account you're currently logged-in in Gmail!</p>
+<br>
+<p>Add filters to erase unwanted emails from your inbox automatically.
+    They will process every 5 minutes inspecting all your folders, including spam and bin.
+</p>
 <%
         List<GmailQuery> gmailQueries = GmailQueryRepository.getInstance().findByEmailAddress(user.getEmail());
         pageContext.setAttribute("count", gmailQueries.size());
@@ -33,7 +37,7 @@
     <input type="hidden" name="action" value="<%=Action.INSERT_QUERY%>"/>
     <input type="hidden" name="userId" value="${user.userId}"/>
     <input type="hidden" name="emailAddress" value="${user.email}"/>
-    <div><input type="text" name="query" size="60"/> <input type="submit" value="Ins"/></div>
+    <div><input type="text" name="query"/> <input type="submit" value="Add"/></div>
 </form>
 <%
         if (!gmailQueries.isEmpty()) {
@@ -46,7 +50,7 @@
     <input type="hidden" name="action" value="<%=Action.DELETE_QUERY%>"/>
     <input type="hidden" name="emailAddress" value="${user.email}"/>
     <input type="hidden" name="queryId" value="${gmailQuery.id}"/>
-    <div>${i}) ${fn:escapeXml(gmailQuery.query)} <input type="submit" value="Del"/></div>
+    <div>${i}) ${fn:escapeXml(gmailQuery.query)} <input type="submit" value="Remove"/></div>
 </form>
 <%
             }
@@ -55,17 +59,17 @@
     <input type="hidden" name="action" value="<%=Action.RUN_NOW%>"/>
     <input type="hidden" name="userId" value="${user.userId}"/>
     <input type="hidden" name="emailAddress" value="${user.email}"/>
-    <div><input type="submit" value="Run Now"/></div>
+    <div><input type="submit" value="Erase'em now!"/></div>
 </form>
 <%
         }
     } else {
 %>
+<h1>Gmail Black Book</h1>
 <p>Hello!
     <a href="<%= userService.createLoginURL(request.getRequestURI()) %>">Sign in</a>
-    to black-list undesired emails.
+    to black-list unwanted emails.
 </p>
-<p>NOTE: You must be logged-in here with the same account you're currently logged-in in Gmail!</p>
 <%
     }
 %>
