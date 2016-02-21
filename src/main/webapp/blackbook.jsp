@@ -55,12 +55,12 @@
 <%
             }
 %>
-<form action="/frontController" method="post">
-    <input type="hidden" name="action" value="<%=Action.RUN_NOW%>"/>
-    <input type="hidden" name="userId" value="${user.userId}"/>
-    <input type="hidden" name="emailAddress" value="${user.email}"/>
-    <div><input type="submit" value="Erase'em now!"/></div>
-</form>
+<%--<form action="/frontController" method="post">--%>
+    <%--<input type="hidden" name="action" value="<%=Action.RUN_NOW%>"/>--%>
+    <%--<input type="hidden" name="userId" value="${user.userId}"/>--%>
+    <%--<input type="hidden" name="emailAddress" value="${user.email}"/>--%>
+    <%--<div><input type="submit" value="Process now"/></div>--%>
+<%--</form>--%>
 <%
         }
     } else {

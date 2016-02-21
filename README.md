@@ -10,7 +10,6 @@ The main (and only) page is **BLACK** and very straightforward. It provides:
 - Input box to insert filters to your Gmail inbox
 - The list of filters already in place
 - Option to delete each filter individually
-- Option to process the black list manually
 
 Have a look at it live at the Google App Engine: [https://black-book-1221.appspot.com](https://black-book-1221.appspot.com)
 
