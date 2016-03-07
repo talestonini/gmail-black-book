@@ -10,25 +10,25 @@
     <function>
         <name>currentUser</name>
         <function-class>com.talestonini.blackbook.Utils</function-class>
-        <function-signature>com.google.appengine.api.users.User currentUser()</function-signature>
+        <function-signature>com.google.appengine.api.users.User getCurrentUser()</function-signature>
     </function>
 
     <function>
         <name>loginURL</name>
         <function-class>com.talestonini.blackbook.Utils</function-class>
-        <function-signature>java.lang.String loginURL(javax.servlet.http.HttpServletRequest)</function-signature>
+        <function-signature>java.lang.String createLoginURL(javax.servlet.http.HttpServletRequest)</function-signature>
     </function>
 
     <function>
         <name>logoutURL</name>
         <function-class>com.talestonini.blackbook.Utils</function-class>
-        <function-signature>java.lang.String logoutURL(javax.servlet.http.HttpServletRequest)</function-signature>
+        <function-signature>java.lang.String createLogoutURL(javax.servlet.http.HttpServletRequest)</function-signature>
     </function>
 
     <function>
         <name>gmailQueries</name>
         <function-class>com.talestonini.blackbook.Utils</function-class>
-        <function-signature>java.util.List gmailQueries(java.lang.String)</function-signature>
+        <function-signature>java.util.List findGmailQueries(java.lang.String)</function-signature>
     </function>
 
 </taglib>

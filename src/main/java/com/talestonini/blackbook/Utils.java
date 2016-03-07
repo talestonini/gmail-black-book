@@ -40,14 +40,33 @@ public class Utils {
     private Utils() {
     }
 
+    public static User getCurrentUser() {
+        UserService userService = UserServiceFactory.getUserService();
+        return userService.getCurrentUser();
+    }
+
+    public static String createLoginURL(HttpServletRequest request) {
+        UserService userService = UserServiceFactory.getUserService();
+        return userService.createLoginURL(request.getRequestURI());
+    }
+
+    public static String createLogoutURL(HttpServletRequest request) {
+        UserService userService = UserServiceFactory.getUserService();
+        return userService.createLogoutURL(request.getRequestURI());
+    }
+
+    public static List<GmailQuery> findGmailQueries(String emailAddress) {
+        return GmailQueryRepository.getInstance().findByEmailAddress(emailAddress);
+    }
+
     public static Gmail getGmailService(String userId) throws IOException {
-        Credential credential = newFlow().loadCredential(userId);
+        Credential credential = buildNewFlow().loadCredential(userId);
         return new Gmail.Builder(HTTP_TRANSPORT, JSON_FACTORY, credential)
                 .setApplicationName(APPLICATION_NAME)
                 .build();
     }
 
-    public static GoogleAuthorizationCodeFlow newFlow() throws IOException {
+    public static GoogleAuthorizationCodeFlow buildNewFlow() throws IOException {
         return new GoogleAuthorizationCodeFlow.Builder(HTTP_TRANSPORT, JSON_FACTORY, getClientCredential(),
                 Collections.singleton(GmailScopes.MAIL_GOOGLE_COM))
                 .setDataStoreFactory(DATA_STORE_FACTORY)
@@ -71,24 +90,5 @@ public class Utils {
                     "Download client_secrets.json file from Google Cloud Platform Console.");
         }
         return clientSecrets;
-    }
-
-    public static User currentUser() {
-        UserService userService = UserServiceFactory.getUserService();
-        return userService.getCurrentUser();
-    }
-
-    public static String loginURL(HttpServletRequest request) {
-        UserService userService = UserServiceFactory.getUserService();
-        return userService.createLoginURL(request.getRequestURI());
-    }
-
-    public static String logoutURL(HttpServletRequest request) {
-        UserService userService = UserServiceFactory.getUserService();
-        return userService.createLogoutURL(request.getRequestURI());
-    }
-
-    public static List<GmailQuery> gmailQueries(String emailAddress) {
-        return GmailQueryRepository.getInstance().findByEmailAddress(emailAddress);
     }
 }

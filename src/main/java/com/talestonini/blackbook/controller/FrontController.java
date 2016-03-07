@@ -26,7 +26,7 @@ public class FrontController extends AbstractAppEngineAuthorizationCodeServlet {
         assert action != null && !action.isEmpty();
         Action actionType = Action.valueOf(action);
 
-        User user = Utils.currentUser();
+        User user = Utils.getCurrentUser();
         GmailBlackListService gmailBlackListService = GmailBlackListService.getInstance();
 
         switch (actionType) {
@@ -51,7 +51,7 @@ public class FrontController extends AbstractAppEngineAuthorizationCodeServlet {
     protected AuthorizationCodeFlow initializeFlow()
             throws ServletException, IOException {
 
-        return Utils.newFlow();
+        return Utils.buildNewFlow();
     }
 
     @Override

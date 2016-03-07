@@ -35,7 +35,7 @@ public class OAuth2Callback extends AbstractAppEngineAuthorizationCodeCallbackSe
     protected AuthorizationCodeFlow initializeFlow()
             throws IOException {
 
-        return Utils.newFlow();
+        return Utils.buildNewFlow();
     }
 
     @Override
