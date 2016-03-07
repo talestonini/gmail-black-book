@@ -11,11 +11,17 @@ import com.google.api.client.json.JsonFactory;
 import com.google.api.client.json.jackson2.JacksonFactory;
 import com.google.api.services.gmail.Gmail;
 import com.google.api.services.gmail.GmailScopes;
+import com.google.appengine.api.users.User;
+import com.google.appengine.api.users.UserService;
+import com.google.appengine.api.users.UserServiceFactory;
+import com.talestonini.blackbook.model.GmailQuery;
+import com.talestonini.blackbook.repository.GmailQueryRepository;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.Collections;
+import java.util.List;
 
 import static com.google.api.client.util.Preconditions.checkArgument;
 
@@ -65,5 +71,24 @@ public class Utils {
                     "Download client_secrets.json file from Google Cloud Platform Console.");
         }
         return clientSecrets;
+    }
+
+    public static User currentUser() {
+        UserService userService = UserServiceFactory.getUserService();
+        return userService.getCurrentUser();
+    }
+
+    public static String loginURL(HttpServletRequest request) {
+        UserService userService = UserServiceFactory.getUserService();
+        return userService.createLoginURL(request.getRequestURI());
+    }
+
+    public static String logoutURL(HttpServletRequest request) {
+        UserService userService = UserServiceFactory.getUserService();
+        return userService.createLogoutURL(request.getRequestURI());
+    }
+
+    public static List<GmailQuery> gmailQueries(String emailAddress) {
+        return GmailQueryRepository.getInstance().findByEmailAddress(emailAddress);
     }
 }

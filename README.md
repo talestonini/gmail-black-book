@@ -19,7 +19,7 @@ anymore, or having to manually empty my spam or bin folders :/
 
 In this app you can create filters using the same syntax Gmail allows you to create filters within their settings and
 have these filters processed to erase unwanted emails once and for all *automatically*. Behind the scenes a cron job
-will run each of your filters every 5 minutes and get rid of those irritating emails even when they are already in the
+will run each of your filters every minute and get rid of those irritating emails even when they are already in the
 spam or bin folders.
 
 That's the best way to tell some people to get a life!

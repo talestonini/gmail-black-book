@@ -45,4 +45,12 @@
         <servlet-name>processCronJob</servlet-name>
         <url-pattern>/processCronJob</url-pattern>
     </servlet-mapping>
+
+    <jsp-config>
+        <taglib>
+            <taglib-uri>https://black-book-1221.appspot.com</taglib-uri>
+            <taglib-location>/WEB-INF/tags/utils.tld</taglib-location>
+        </taglib>
+    </jsp-config>
+
 </web-app>
