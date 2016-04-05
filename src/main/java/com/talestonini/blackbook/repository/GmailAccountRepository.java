@@ -28,15 +28,22 @@ public class GmailAccountRepository {
     }
 
     public GmailAccount findByEmailAddress(String emailAddress) {
-        return ofy().load().key(Key.create(GmailAccount.class, emailAddress)).now();
+        return ofy().load()
+                .key(Key.create(GmailAccount.class, emailAddress))
+                .now();
     }
 
     public void insertAccount(String emailAddress, String userId) {
         GmailAccount gmailAccount = new GmailAccount(emailAddress, userId);
-        ofy().save().entity(gmailAccount).now();
+        ofy().save()
+                .entity(gmailAccount)
+                .now();
     }
 
     public void deleteAccount(String emailAddress) {
-        ofy().delete().type(GmailAccount.class).id(emailAddress).now();
+        ofy().delete()
+                .type(GmailAccount.class)
+                .id(emailAddress)
+                .now();
     }
 }

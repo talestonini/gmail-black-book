@@ -2,7 +2,7 @@
 <cronentries>
     <cron>
         <url>/processCronJob</url>
-        <description>Process Black Lists every 5 minutes</description>
+        <description>Process Black Lists every 1 minute</description>
         <schedule>every 1 minutes</schedule>
     </cron>
 </cronentries>
