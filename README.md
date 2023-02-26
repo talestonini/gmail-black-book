@@ -1,7 +1,7 @@
 Gmail Black Book
 ================
 
-This app allows you to set **HARD** filters for your Gmail inbox! 
+This app allows you to set **HARD** filters for your Gmail inbox!
 
 The main (and only) page is **BLACK** and very straightforward. It provides:
 
@@ -41,8 +41,8 @@ Tools:
 
 To run locally (it does not work well with the redirection unless using Credential of type "other"):
 
-`mvn appengine:devserver`
+    mvn appengine:devserver
 
 To deploy into Google App Engine:
 
-`mvn appengine:update`
+    mvn appengine:update
