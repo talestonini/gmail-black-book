@@ -39,10 +39,15 @@ Tools:
 - Java 1.7 or above
 - Maven
 
-To run locally (it does not work well with the redirection unless using Credential of type "other"):
+~~To run locally (it does not work well with the redirection unless using Credential of type "other"):~~
 
-    mvn appengine:devserver
+    ~~mvn appengine:devserver~~
 
-To deploy into Google App Engine:
+~~To deploy into Google App Engine:~~
 
-    mvn appengine:update
+    ~~mvn appengine:update~~
+
+This is how deploy worked last time:
+
+    mvn appengine:cloudSdkLogin
+    mvn package appengine:deploy -Dapp.deploy.projectId=black-book-1221
