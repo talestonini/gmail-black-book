@@ -19,7 +19,7 @@
         <h1>${fn:escapeXml(user.nickname)}'s Gmail Black Book</h1>
         <p>Hello, ${fn:escapeXml(user.nickname)}! (You can <a href="${utl:logoutURL(pageContext.request)}">sign out</a>.)
         </p>
-        <p>Add filters to erase unwanted emails from your inbox automatically. They will process every minute,
+        <p>Add filters to erase unwanted emails from your inbox automatically. They will process every 24 hours,
             inspecting all your folders (including spam and bin).
         </p>
         <form action="/frontController" method="post">
